@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML 代码预览</title>
+</head>
+<body>
+
+<div id="preview"></div>
+
+<script>
+    // 从 localStorage 获取用户输入的 HTML 代码
+    const userHtml = localStorage.getItem('userHtml');
+    
+    if (userHtml) {
+        // 将 HTML 代码插入到页面中
+        document.body.innerHTML = userHtml;
+    } else {
+        document.body.innerHTML = "<p>没有可显示的内容。</p>";
+    }
+</script>
+
+</body>
+</html>

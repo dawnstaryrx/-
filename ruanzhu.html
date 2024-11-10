@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI软著助手</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* height: 100vh; */
+            margin: 0;
+            margin-top: 20px;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 1100px;
+            width: 100%;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .container h2 {
+            margin-top: 0;
+            font-size: 1.5em;
+        }
+        .container textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            resize: vertical;
+            font-size: 1em;
+        }
+        .container button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .container button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        .response {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e9ecef;
+            border-radius: 4px;
+            font-size: 1em;
+            white-space: pre-wrap;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2>AI软著助手</h2>
+    <textarea id="userInput" placeholder="请输入软件名称..."></textarea>
+    <button id="submitButton" onclick="fetchData()">提交</button>
+    <div id="response" class="response"></div>
+</div>
+
+<script>
+    const userInput = document.getElementById('userInput').value;
+    const submitButton = document.getElementById('submitButton');
+    const responseDiv = document.getElementById('response');
+    async function fetchData() {
+        const userInput = document.getElementById('userInput').value;
+        if (!userInput.trim()) {
+            alert("请输入文字内容！");
+            return;
+        }
+        // 禁用按钮并显示“加载中”提示
+        submitButton.disabled = true;
+        submitButton.textContent = "加载中...";
+        responseDiv.innerText = "正在生成回复，请稍候...";
+
+        const requestBody = {
+            "message": {
+                "content": {
+                    "type": "text",
+                    "value": {
+                        "showText": userInput
+                    }
+                }
+            },
+            "source": "oOGxlil4AQkQGkNF5521uSXXPf94qHKq",
+            "from": "openapi",
+            "openId": "xxx"
+        };
+
+        try {
+            const response = await fetch('https://agentapi.baidu.com/assistant/getAnswer?appId=oOGxlil4AQkQGkNF5521uSXXPf94qHKq&secretKey=3nj2GYktGcZFhAxgPbPKZebF4QR788u2', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(requestBody)
+            });
+
+            const result = await response.json();
+            
+            if (result.status === 0 && result.data && result.data.content.length > 0) {
+                const responseData = result.data.content[0].data;
+                document.getElementById('response').innerHTML = marked.parse(responseData);
+            } else {
+                document.getElementById('response').innerText = "请求失败：" + result.message;
+            }
+        } catch (error) {
+            console.error("请求错误：", error);
+            document.getElementById('response').innerText = "请求出错，请稍后重试。";
+        }
+    }
+</script>
+
+</body>
+</html>

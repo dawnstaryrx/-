@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>软著123</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f7f6;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: #2177b8;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-brand {
+            color: white;
+            font-weight: bold;
+            font-size: 1.8em;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .card {
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-header {
+            font-size: 1.6em;
+            background-color: #2177b8;
+            color: white;
+            border-radius: 10px 10px 0 0;
+            padding: 15px;
+        }
+        .card-body {
+            text-align: center;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 0 0 10px 10px;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+        .btn-custom {
+            background-color: #2177b8;
+            color: white;
+            font-size: 1.2em;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .btn-custom:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+        .footer {
+            background-color: #f8f9fa;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 1em;
+            color: #666;
+        }
+        .footer p {
+            margin: 0;
+        }
+        h1 {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .row {
+            display: flex;
+            justify-content: space-between;
+        }
+        .col-md-4 {
+            flex: 1;
+            padding: 0 15px;
+        }
+        @media (max-width: 768px) {
+            .col-md-4 {
+                margin-bottom: 20px;
+            }
+            .row {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+        <a class="navbar-brand" href="#">软著123</a>
+    </div>
+</nav>
+
+<!-- Main content -->
+<div class="container">
+    <h1 class="text-center">欢迎来到软著123系统首页</h1>
+    <div class="row">
+        <!-- Card 1 -->
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">表单生成</div>
+                <div class="card-body">
+                    <p>点击下面的按钮进入表单生成页面，得到软著表单+页面+MySQL脚本。</p>
+                    <a href="/ruanzhu.html" class="btn btn-custom" target="_blank">进入</a>
+                </div>
+            </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">软件图片</div>
+                <div class="card-body">
+                    <p>点击下面的按钮1进入HTML生成页面。</p>
+                    <p>点击下面的按钮2运行HTML代码。</p>
+                    <a href="/desc2HTML.html" class="btn btn-custom" target="_blank">HTML生成</a>
+                    <a href="/htmlShow.html" class="btn btn-custom" target="_blank">HTML运行</a>
+                </div>
+            </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">代码生成</div>
+                <div class="card-body">
+                    <p>点击下面的按钮进入代码生成页面。根据MySQL脚本生成代码。</p>
+                    <a href="https://jully.top/generator/" class="btn btn-custom" target="_blank">进入</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    <p>&copy; 2024 东方既白-软著123. 版权所有.</p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
